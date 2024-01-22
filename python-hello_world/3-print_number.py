@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 number = 98
-print(number, "Battery street")
+name = "Battery street"
+print("{} {}".format(number, name))
