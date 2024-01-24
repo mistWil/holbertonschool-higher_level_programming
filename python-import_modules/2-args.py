@@ -9,6 +9,6 @@ if __name__ == "__main__":
         print(len(sys.argv) - 1, "arguments:")
     else:
         print(len(sys.argv) - 1, "arguments:")
-    for i in range(len(args)):
-        print("{}: {}".format(ar, args[i]))
-        ar += 1
+        for i in range(len(args)):
+            print("{}: {}".format(ar, args[i]))
+            ar += 1
