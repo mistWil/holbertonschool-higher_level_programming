@@ -7,10 +7,8 @@
 
 
 class Square:
-    
+
     """
     Define empty class named Square
     """
-
-
     pass
