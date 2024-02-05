@@ -31,7 +31,6 @@ You are not allowed to import any module
 """
 
 
-
 class Square:
     """
     Defines a square with private attributes size and position.
