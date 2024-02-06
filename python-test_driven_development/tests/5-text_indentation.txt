@@ -2,6 +2,13 @@
 
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
+
+>>> text_indentation("Lorem ipsum. Quonam modo?")
+Lorem ipsum.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+
 >>> text_indentation(2)
 Traceback (most recent call last):
     ...
