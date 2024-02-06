@@ -34,6 +34,6 @@ def text_indentation(text):
         elif i == ' ' and new_text[-1] in '\n':
             continue
         new_text += i
-        if i in ".?:!":
+        if i in ".?:":
             new_text += "\n\n"
     print(new_text, end="")
