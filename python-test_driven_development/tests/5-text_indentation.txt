@@ -1,0 +1,13 @@
+# doctest_5-text_indentation.py
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo?")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+
+>>> text_indentation(2)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
