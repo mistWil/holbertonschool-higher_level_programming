@@ -2,9 +2,9 @@
 
 
 """
-    add function
+    Add_function
     args : a & b must be int or float
-    return a + b
+    return: a + b
 """
 
 
