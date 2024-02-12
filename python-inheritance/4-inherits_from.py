@@ -12,7 +12,8 @@ You are not allowed to import any module
 
 
 def inherits_from(obj, a_class):
-    """Check if the object is an instance of a class that
+    """
+    Check if the object is an instance of a class that
     inherited (directly or indirectly)
     from the specified class.
     """
