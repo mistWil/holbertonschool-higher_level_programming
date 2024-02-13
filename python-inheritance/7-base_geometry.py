@@ -20,7 +20,6 @@ class BaseGeometry:
     """
     BaseGeometry class.
     """
-
     def area(self):
         """
         Computes the area.
@@ -31,6 +30,8 @@ class BaseGeometry:
         """
         Validates the value.
         """
+        if not isinstance(name, str):
+            raise TypeError("name must be a string")
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
