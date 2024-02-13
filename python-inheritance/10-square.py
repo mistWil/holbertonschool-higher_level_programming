@@ -3,7 +3,6 @@
 
 """
 Write a class Square that inherits from Rectangle (9-rectangle.py):
-
 Instantiation with size: def __init__(self, size)::
 size must be private. No getter or setter
 size must be a positive integer, validated by integer_validator
@@ -61,9 +60,16 @@ class Square(Rectangle):
     """
     New class Square that inherits from Rectangle
     """
+
     def __init__(self, size):
         super().__init__(size, size)
         self.__size = size
+
+    def area(self):
+        """
+        Method to calculate the area of the rectangle
+        """
+        return self.__size * self.__size
 
     def __str__(self):
         """
