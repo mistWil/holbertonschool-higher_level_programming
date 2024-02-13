@@ -48,8 +48,3 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()
