@@ -1,8 +1,4 @@
 # doctest_1-my_list.py
-======================
-
-Printing a sorted list
--------------------
 
 >>> MyList = __import__('1-my_list').MyList
 
@@ -30,3 +26,10 @@ Printing a sorted list
 >>> my_list.append(1)
 >>> my_list.print_sorted()
 [1]
+
+>>> my_list = MyList()
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list.__str__())
+[2, 3, 5]
