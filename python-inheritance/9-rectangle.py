@@ -18,7 +18,7 @@ class BaseGeometry:
     """
     class 'BaseGeometry'
     """
-    
+
     def area(self):
         """
         Public instance method that raises an exception
@@ -39,7 +39,7 @@ class Rectangle(BaseGeometry):
     """
     New class Rectangle that inherits from parent class
     """
-    
+
     def __init__(self, width, height):
         super().__init__()
         super().integer_validator("width", width)
