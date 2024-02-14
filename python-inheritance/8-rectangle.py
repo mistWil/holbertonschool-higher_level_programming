@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
 
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
 """
 * Write a class BaseGeometry
 * Public instance method: that raises an Exception
@@ -9,24 +12,6 @@
 """
 
 
-class BaseGeometry:
-    """
-    class 'BaseGeometry'
-    """
-    def area(self):
-        """
-        Public instance method that raises an exception
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """
-        Public instance method that validates value
-        """
-        if not type(value) is int:
-            raise TypeError(f"{name} must be an integer")
-        elif value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
 
 
 class Rectangle(BaseGeometry):
