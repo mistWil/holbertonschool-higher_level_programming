@@ -14,6 +14,7 @@ You are not allowed to import any module
 
 
 def pascal_triangle(n):
+    """Function def pascal_triangle(n)"""
     if n <= 0:
         return []
 
