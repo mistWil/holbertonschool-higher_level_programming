@@ -21,6 +21,7 @@ to the public instance attribute id
 
 
 import json
+import os.path
 
 
 class Base:
