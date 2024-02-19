@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import json
 
 
 """
@@ -19,6 +18,9 @@ and you don’t need to test the type of it
 otherwise, increment __nb_objects and assign the new value
 to the public instance attribute id
 """
+
+
+import json
 
 
 class Base:
