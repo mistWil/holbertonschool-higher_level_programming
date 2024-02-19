@@ -34,8 +34,8 @@ class Rectangle(Base):
             y (int): coordinate of the rectangle
         """
         super().__init__(id)
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
         self.x = x
         self.y = y
 
