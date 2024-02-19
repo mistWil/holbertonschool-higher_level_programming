@@ -27,7 +27,7 @@ class Base:
     def __init__(self, id=None):
         """Def id"""
         self.id = id
- 
+
         if self.id is not None:
             self.id = id
         else:
