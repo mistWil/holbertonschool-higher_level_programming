@@ -24,12 +24,20 @@ from models.base import Base
 class Rectangle(Base):
     """Base class"""
     def __init__(self, width, height, x=0, y=0, id=None):
-        """__init___"""
+        """
+        Constructor to initialize the Rectanble instance
+
+        Args:
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+            x (int): coordinate of the rectangle
+            y (int): coordinate of the rectangle
+        """
+        super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
         self.y = y
-        super().__init__(id)
 
         @property
         def width(self):
