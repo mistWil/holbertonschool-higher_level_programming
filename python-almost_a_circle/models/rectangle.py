@@ -101,8 +101,10 @@ class Rectangle(Base):
 
     def display(self):
         """Public method that prints the rectangle in stdout"""
-        for i in range(self.height):
-            print('#' * self.width)
+        for i in range(self.y):
+            print()
+        for j in range(self.height):
+            print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
         return f'[Rectangle] ({self.id}) {self.x}/{self.y} - '\
