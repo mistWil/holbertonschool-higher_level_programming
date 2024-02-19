@@ -111,6 +111,12 @@ class Rectangle(Base):
             f'{self.width}/{self.height}'
 
     def update(self, *args):
+        """
+        Public method that that assigns a key/value argument to attributes
+        Args:
+            args: list of no keyword arguments
+            kwargs: list of keyword arguments
+        """
         if len(args) > 0:
             self.id = args[0]
 
