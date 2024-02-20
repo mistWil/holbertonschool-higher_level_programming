@@ -114,6 +114,100 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(captured_output.getvalue(), expected_output)
 
+    def test_create_with_id_only(self):
+        """
+        Teste si la méthode create() crée correctement un Rectangle avec un ID spécifié.
+        """
+        rectangle = Rectangle.create(**{'id': 89})
+        self.assertEqual(rectangle.id, 89)
+        self.assertEqual(rectangle.width, 1)
+        self.assertEqual(rectangle.height, 1)
+        self.assertEqual(rectangle.x, 0)
+        self.assertEqual(rectangle.y, 0)
+
+    def test_create_with_id_and_width(self):
+        """
+        Teste si la méthode create() crée correctement un Rectangle avec un ID et une largeur spécifiés.
+        """
+        rectangle = Rectangle.create(**{'id': 89, 'width': 5})
+        self.assertEqual(rectangle.id, 89)
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 1)
+        self.assertEqual(rectangle.x, 0)
+        self.assertEqual(rectangle.y, 0)
+
+    def test_create_with_id_width_and_height(self):
+        """
+        Teste si la méthode create() crée correctement un Rectangle avec un ID, une largeur et une hauteur spécifiés.
+        """
+        rectangle = Rectangle.create(**{'id': 89, 'width': 5, 'height': 10})
+        self.assertEqual(rectangle.id, 89)
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 0)
+        self.assertEqual(rectangle.y, 0)
+
+    def test_create_with_id_width_height_and_position(self):
+        """
+        Teste si la méthode create() crée correctement un Rectangle avec un ID, une largeur, une hauteur et une position spécifiés.
+        """
+        rectangle = Rectangle.create(**{'id': 89, 'width': 5, 'height': 10, 'x': 2, 'y': 3})
+        self.assertEqual(rectangle.id, 89)
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 2)
+        self.assertEqual(rectangle.y, 3)
+
+    def test_create_with_invalid_arguments(self):
+        """
+        Teste si la méthode create() lève une exception avec des arguments invalides.
+        """
+        with self.assertRaises(TypeError):
+            Rectangle.create(**{'id': '89'}) # L'ID doit être un entier
+        with self.assertRaises(TypeError):
+            Rectangle.create(**{'id': 89, 'width': '5'}) # La largeur doit être un entier
+        with self.assertRaises(TypeError):
+            Rectangle.create(**{'id': 89, 'width': 5, 'height': '10'}) # La hauteur doit être un entier
+
+    def test_save_to_file_none(self):
+        """
+        Teste si la méthode save_to_file() enregistre correctement une liste vide.
+        """
+        Rectangle.save_to_file(None)
+        self.assertFalse(os.path.exists("Rectangle.json"))
+
+    def test_save_to_file_empty_list(self):
+        """
+        Teste si la méthode save_to_file() enregistre correctement une liste vide.
+        """
+        Rectangle.save_to_file([])
+        self.assertFalse(os.path.exists("Rectangle.json"))
+
+    def test_save_to_file_with_rectangles(self):
+        """
+        Teste si la méthode save_to_file() enregistre correctement une liste de Rectangles.
+        """
+        r1 = Rectangle(1, 2, 3, 4)
+        Rectangle.save_to_file([r1])
+        self.assertTrue(os.path.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+            self.assertEqual(content, '[{"id": 1, "width": 1, "height": 2, "x": 3, "y": 4}]')
+
+    def test_load_from_file_non_existing_file(self):
+        """
+        Teste si la méthode load_from_file() retourne une liste vide lorsque le fichier n'existe pas.
+        """
+        self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_load_from_file_existing_file(self):
+        """
+        Teste si la méthode load_from_file() retourne une liste de Rectangles lorsque le fichier existe.
+        """
+        r1 = Rectangle(1, 2, 3, 4)
+        Rectangle.save_to_file([r1])
+        self.assertEqual(Rectangle.load_from_file(), [r1])
+
     def test_display(self):
         """
         Teste si la méthode display() affiche correctement le rectangle.
