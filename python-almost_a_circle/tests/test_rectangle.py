@@ -1,6 +1,7 @@
 import unittest
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
     """
     Classe de test pour la classe Rectangle.
@@ -9,6 +10,26 @@ class TestRectangle(unittest.TestCase):
     def test_constructor(self):
         """
         Teste si le constructeur de Rectangle initialise correctement les attributs.
+        """
+        rectangle = Rectangle(5, 10) # Ajoutez les coordonnées x et y
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 0)  # Défaut
+        self.assertEqual(rectangle.y, 0)  # Défaut
+
+    def test_constructor_with_coordinates(self):
+        """
+        Teste si le constructeur de Rectangle initialise correctement les attributs avec des coordonnées.
+        """
+        rectangle = Rectangle(5, 10, 2, 3)
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 2)
+        self.assertEqual(rectangle.y, 3)
+
+    def test_constructor_with_all_arguments(self):
+        """
+        Teste si le constructeur de Rectangle initialise correctement les attributs avec tous les arguments.
         """
         rectangle = Rectangle(5, 10, 2, 3, 1)
         self.assertEqual(rectangle.width, 5)
