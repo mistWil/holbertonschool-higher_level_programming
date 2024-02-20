@@ -27,6 +27,48 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle.x, 2)
         self.assertEqual(rectangle.y, 3)
 
+    def test_invalid_width(self):
+        """
+        Teste si une ValueError est levée lorsque la largeur est négative.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 2)
+
+    def test_invalid_height(self):
+        """
+        Teste si une ValueError est levée lorsque la hauteur est négative.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(1, -2)
+
+    def test_zero_width(self):
+        """
+        Teste si une ValueError est levée lorsque la largeur est nulle.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2)
+
+    def test_zero_height(self):
+        """
+        Teste si une ValueError est levée lorsque la hauteur est nulle.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(1, 0)
+
+    def test_invalid_x_coordinate(self):
+        """
+        Teste si une ValueError est levée lorsque la coordonnée x est négative.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, -3)
+
+    def test_invalid_y_coordinate(self):
+        """
+        Teste si une ValueError est levée lorsque la coordonnée y est négative.
+        """
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, 3, -4)
+
     def test_constructor_with_all_arguments(self):
         """
         Teste si le constructeur de Rectangle initialise correctement les attributs avec tous les arguments.
