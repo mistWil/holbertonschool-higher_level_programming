@@ -23,7 +23,6 @@ to the public instance attribute id
 import json
 import os.path
 
-
 class Base:
     """Class named Base"""
     __nb_objects = 0
@@ -93,3 +92,4 @@ class Base:
         list_of_instances = cls.from_json_string(file_to_string)
         dict_instances = [cls.create(**dict) for dict in list_of_instances]
         return dict_instances
+
