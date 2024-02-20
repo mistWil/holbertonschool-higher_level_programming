@@ -1,23 +1,6 @@
 #!/usr/bin/python3
 
 
-"""
-Write the class Rectangle that inherits from Base:
-
-In the file models/rectangle.py
-Class Rectangle inherits from Base
-Private instance attributes, each with its own public getter and setter:
-__width -> width
-__height -> height
-__x -> x
-__y -> y
-Class constructor: def __init__(self, width, height, x=0, y=0, id=None):
-Call the super class with id - this super call with use the logic of the
-__init__ of the Base class
-Assign each argument width, height, x and y to the right attribute
-"""
-
-
 from models.base import Base
 
 
@@ -25,7 +8,7 @@ class Rectangle(Base):
     """Base class"""
     def __init__(self, width, height, x=0, y=0, id=None):
         """
-        Constructor to initialize the Rectanble instance
+        Constructor to initialize the Rectangle instance
 
         Args:
             width (int): width of the rectangle
@@ -107,12 +90,12 @@ class Rectangle(Base):
             print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
-        return f'[Rectangle] ({self.id}) {self.x}/{self.y} - '\
-            f'{self.width}/{self.height}'
+        return f'[Rectangle] ({self.id}) {self.x}/{self.y} - ' \
+               f'{self.width}/{self.height}'
 
     def update(self, *args, **kwargs):
         """
-        Public method that that assigns a key/value argument to attributes
+        Public method that assigns a key/value argument to attributes
         Args:
             args: list of no keyword arguments
             kwargs: list of keyword arguments
@@ -133,4 +116,20 @@ class Rectangle(Base):
             'height': self.height,
             'x': self.x,
             'y': self.y
-               }
+        }
+
+    @classmethod
+    def create(cls, **kwargs):
+        """
+        Create a new instance of Rectangle from a dictionary of parameters.
+        """
+        if 'id' in kwargs:
+            new_id = kwargs['id']
+            del kwargs['id']
+        else:
+            new_id = None
+        width = kwargs.get('width', None)
+        height = kwargs.get('height', None)
+        x = kwargs.get('x', 0)
+        y = kwargs.get('y', 0)
+        return cls(width, height, x, y, id=new_id)

@@ -1,6 +1,10 @@
+#!/usr/bin/python3
+
+
 import unittest
 from models.rectangle import Rectangle
 import sys
+import os
 from io import StringIO
 
 
