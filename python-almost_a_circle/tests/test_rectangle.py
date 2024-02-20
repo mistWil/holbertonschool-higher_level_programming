@@ -1,5 +1,7 @@
 import unittest
 from models.rectangle import Rectangle
+import sys
+from io import StringIO
 
 
 class TestRectangle(unittest.TestCase):
@@ -79,6 +81,50 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle.x, 2)
         self.assertEqual(rectangle.y, 3)
         self.assertEqual(rectangle.id, 1)
+
+    def test_str_representation(self):
+        """
+        Teste si la méthode __str__() retourne une représentation correcte du rectangle.
+        """
+        rectangle = Rectangle(5, 10, 2, 3, 1)
+        expected_output = "[Rectangle] (1) 2/3 - 5/10"
+        self.assertEqual(str(rectangle), expected_output)
+
+    def test_display_without_x_and_y(self):
+        """
+        Teste si la méthode display() affiche correctement le rectangle sans x et y.
+        """
+        rectangle = Rectangle(5, 5)
+        expected_output = "#####\n#####\n#####\n#####\n#####\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rectangle.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display_without_y(self):
+        """
+        Teste si la méthode display() affiche correctement le rectangle sans y.
+        """
+        rectangle = Rectangle(5, 5, 2)
+        expected_output = "  #####\n  #####\n  #####\n  #####\n  #####\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rectangle.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display(self):
+        """
+        Teste si la méthode display() affiche correctement le rectangle.
+        """
+        rectangle = Rectangle(5, 5, 2, 3)
+        expected_output = "\n\n\n  #####\n  #####\n  #####\n  #####\n  #####\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rectangle.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), expected_output)
 
     def test_area(self):
         """
