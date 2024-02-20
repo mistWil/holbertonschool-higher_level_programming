@@ -122,10 +122,10 @@ class TestRectangle(unittest.TestCase):
         """
         Teste si la méthode create() crée correctement un Rectangle avec un ID spécifié.
         """
-        rectangle = Rectangle.create(**{'id': 89})
+        rectangle = Rectangle.create(**{'id': 89, 'width': 5, 'height': 10})
         self.assertEqual(rectangle.id, 89)
-        self.assertEqual(rectangle.width, 1)
-        self.assertEqual(rectangle.height, 1)
+        self.assertEqual(rectangle.width, 5)
+        self.assertEqual(rectangle.height, 10)
         self.assertEqual(rectangle.x, 0)
         self.assertEqual(rectangle.y, 0)
 
@@ -133,10 +133,10 @@ class TestRectangle(unittest.TestCase):
         """
         Teste si la méthode create() crée correctement un Rectangle avec un ID et une largeur spécifiés.
         """
-        rectangle = Rectangle.create(**{'id': 89, 'width': 5})
+        rectangle = Rectangle.create(**{'id': 89, 'width': 5, 'height': 10})
         self.assertEqual(rectangle.id, 89)
         self.assertEqual(rectangle.width, 5)
-        self.assertEqual(rectangle.height, 1)
+        self.assertEqual(rectangle.height, 10)
         self.assertEqual(rectangle.x, 0)
         self.assertEqual(rectangle.y, 0)
 
@@ -210,7 +210,13 @@ class TestRectangle(unittest.TestCase):
         """
         r1 = Rectangle(1, 2, 3, 4)
         Rectangle.save_to_file([r1])
-        self.assertEqual(Rectangle.load_from_file(), [r1])
+        rectangles = Rectangle.load_from_file()
+        self.assertEqual(len(rectangles), 1)
+        self.assertEqual(rectangles[0].id, r1.id)
+        self.assertEqual(rectangles[0].width, r1.width)
+        self.assertEqual(rectangles[0].height, r1.height)
+        self.assertEqual(rectangles[0].x, r1.x)
+        self.assertEqual(rectangles[0].y, r1.y)
 
     def test_display(self):
         """

@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 
+import os.path
+import json
 from models.base import Base
 
 
@@ -29,8 +31,8 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        """Setter"""
-        if type(value) is not int:
+        """Width setter"""
+        if not isinstance(value, int):
             raise TypeError('width must be an integer')
         if value <= 0:
             raise ValueError('width must be > 0')
@@ -133,3 +135,24 @@ class Rectangle(Base):
         x = kwargs.get('x', 0)
         y = kwargs.get('y', 0)
         return cls(width, height, x, y, id=new_id)
+
+    @classmethod
+    def load_from_file(cls):
+        """Charge les instances à partir d'un fichier"""
+        file_name = cls.__name__ + ".json"
+        if not os.path.exists(file_name):
+            return []
+        with open(file_name, mode="r", encoding="utf-8") as f:
+            return [cls.create(**obj) for obj in cls.from_json_string(f.read())]
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """Enregistre les instances dans un fichier"""
+        file_name = cls.__name__ + ".json"
+        if list_objs is None or len(list_objs) == 0:
+            if os.path.exists(file_name):
+                os.remove(file_name)
+        else:
+            dict_list = [obj.to_dictionary() for obj in list_objs]
+            with open(file_name, mode="w", encoding="utf-8") as f:
+                f.write(cls.to_json_string(dict_list))
