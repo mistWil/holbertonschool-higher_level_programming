@@ -62,6 +62,18 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rectangle.x, 9)
         self.assertEqual(rectangle.y, 20)
 
+    def test_invalid_arguments(self):
+        """
+        Tests avec des argument invalides
+        """
+        with self.assertRaises(TypeError):
+            Rectangle("1", 2) # La chaîne "1" doit être remplacée par un entier
+        with self.assertRaises(TypeError):
+            Rectangle(1, "2") # La chaîne "2" doit être remplacée par un entier
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, "3") # La chaîne "3" doit être remplacée par un entier
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, "4") # La chaîne "4" doit être remplacée par un entier
 
 if __name__ == '__main__':
     unittest.main()
