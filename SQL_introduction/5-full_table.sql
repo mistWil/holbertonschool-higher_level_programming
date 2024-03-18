@@ -2,6 +2,7 @@
 
 -- Afficher la description complète de la table first_table
 SELECT
+    TABLE_SCHEMA AS 'Database',
     TABLE_NAME AS 'Table',
     CREATE_TABLE AS 'Create Table'
 FROM
