@@ -1,8 +1,5 @@
--- Script: 16-shows_by_genre.sql
-
--- Select all shows and their genres
-SELECT CONCAT(s.title, ' - ', IFNULL(g.name, 'NULL')) AS 'show - genre'
-FROM tv_shows s
-LEFT JOIN tv_show_genres sg ON s.id = sg.show_id
-LEFT JOIN tv_genres g ON sg.genre_id = g.id
-ORDER BY s.title ASC, g.name ASC;
+SELECT tv_shows.title, IFNULL(tv_genres.name, 'NULL') AS name
+FROM tv_shows
+LEFT JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
+LEFT JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
+ORDER BY tv_shows.title ASC, name ASC;
