@@ -35,8 +35,13 @@ if __name__ == "__main__":
     """
     Get the cursor
     """
-
-    cursor.execute((state_name,))
+    query = """
+    SELECT cities.name 
+    FROM cities 
+    JOIN states ON cities.state_id = states.id 
+    WHERE states.name = %s
+"""
+    cursor.execute(query, (state_name,))
     """
     Execute the SQL command
     """
