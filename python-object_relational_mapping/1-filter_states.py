@@ -10,6 +10,9 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    """
+    This block is executed when the script is run directly, not imported.
+    """
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
