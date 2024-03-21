@@ -5,6 +5,7 @@
 in the states table of hbtn_0e_0_usa where name matches the argument.
 """
 
+
 import MySQLdb
 import sys
 
@@ -28,7 +29,9 @@ if __name__ == "__main__":
     cursor.execute(
         "SELECT * FROM states WHERE states.name = %s ORDER BY states.id",
         (state_name,))
+
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+
     db.close()
