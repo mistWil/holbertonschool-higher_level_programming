@@ -38,8 +38,9 @@ if __name__ == "__main__":
     Get the cursor
     """
 
-    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC",
-                   (state_name,))
+    cursor.execute(
+        "SELECT * FROM states WHERE states.name = %s ORDER BY id states.id",
+        (state_name,))
 
     """
     Execute the SQL command
