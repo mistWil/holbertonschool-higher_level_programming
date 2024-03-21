@@ -11,6 +11,10 @@ import sys
 
 if __name__ == "__main__":
     """including the guard clause"""
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database_name = sys.argv[3]
+    state_name = sys.argv[4]
 
     """connection to the MySQLdb database"""
     db = MySQLdb.connect(
@@ -23,7 +27,7 @@ if __name__ == "__main__":
     cursor = db.cursor()
     cursor.execute(
         "SELECT * FROM states WHERE states.name = %s ORDER BY states.id",
-        (sys.argv[4],))
+        (state_name,))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
