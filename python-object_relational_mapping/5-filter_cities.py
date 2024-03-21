@@ -9,6 +9,11 @@ argument and lists all cities of that state.
 
 import MySQLdb
 import sys
+import os
+
+username = os.getenv('DB_USER')
+password = os.getenv('DB_PASS')
+database = os.getenv('DB_NAME')
 
 
 if __name__ == "__main__":
@@ -27,21 +32,15 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
                          passwd=password, db=database)
-    """
-    Establish a database connection
-    """
 
     cursor = db.cursor()
-    """
-    Get the cursor
-    """
-    query = """
-    SELECT cities.name 
-    FROM cities 
-    JOIN states ON cities.state_id = states.id 
-    WHERE states.name = %s
-"""
-    cursor.execute(query, (state_name,))
-    """
-    Execute the SQL command
-    """
+    cmd = ("SELECT cities.name FROM cities "
+           "INNER JOIN states ON cities.state_id = states.id "
+           "WHERE states.name = %s ORDER BY cities.id")
+    cursor.execute(cmd, (sys.argv[4],))
+
+    rows = cursor.fetchall()
+    to_string = ', '.join(map(" ".join, rows))
+    print(to_string)
+
+    db.close()
