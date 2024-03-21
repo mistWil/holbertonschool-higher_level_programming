@@ -12,21 +12,12 @@ import sys
 
 if __name__ == "__main__":
 
-    """
-    This block is executed when the script is run directly, not imported.
-    """
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-
-    """
-    Get the command line arguments
-    """
-
-    db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                         passwd=password, db=database)
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=sys.argv[1],
+        password=sys.argv[2],
+        database=sys.argv[3])
 
     """
     Establish a database connection
@@ -39,8 +30,8 @@ if __name__ == "__main__":
     """
 
     cursor.execute(
-        "SELECT * FROM states WHERE states.name = %s ORDER BY id states.id",
-        (state_name,))
+        "SELECT * FROM states WHERE states.name = %s ORDER BY states.id",
+        (sys.argv[4],))
 
     """
     Execute the SQL command
