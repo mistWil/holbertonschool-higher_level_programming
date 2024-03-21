@@ -20,11 +20,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Récupérer l'état avec id = 2
-    state = session.query(State).get(2)
+    session.query(State).filter(
+        State.id == 2).update({"name": "New Mexico"})
 
-    if state is not None:
-        # Changer le nom de l'état
-        state.name = "New Mexico"
-        session.commit()
-        session.close()
+    session.commit()
+    session.close()
